@@ -6,6 +6,7 @@ const images = ['01.webp', '02.webp', '03.webp', '04.webp', '05.webp'];
 //Call html
 const slider = document.querySelector('.slider');
 const frameImg = document.querySelector('img');
+const gallery = document.querySelector('.gallery');
 
 
 let frame = '';
@@ -21,6 +22,7 @@ slider.innerHTML += frame;
 document.querySelector('div.slider > img').classList.add('show');
 
 const singleImg = document.querySelectorAll('div.slider > img');
+
 //current active image
 let current = 0;
 
@@ -28,12 +30,16 @@ let current = 0;
 document.querySelector('.next').addEventListener('click', function(){
      if (current < images.length - 1) {
         singleImg[current].classList.remove('show');
+        singleImgGallery[current].classList.remove('active');
         current ++;
         singleImg[current].classList.add('show');
+        singleImgGallery[current].classList.add('active');
      } else if (current === images.length - 1) {
         singleImg[current].classList.remove('show');
+        singleImgGallery[current].classList.remove('active');
         current = 0;
         singleImg[current].classList.add('show');
+        singleImgGallery[current].classList.add('active');
      }
 })
 
@@ -41,20 +47,26 @@ document.querySelector('.next').addEventListener('click', function(){
 document.querySelector('.prev').addEventListener('click', function(){
     if (current > 0) {
        singleImg[current].classList.remove('show');
+       singleImgGallery[current].classList.remove('active');
        current --;
        singleImg[current].classList.add('show');
+       singleImgGallery[current].classList.add('active');
     } else if (current === 0) {
         singleImg[current].classList.remove('show');
+        singleImgGallery[current].classList.remove('active');
         current = images.length - 1;
         singleImg[current].classList.add('show');
+        singleImgGallery[current].classList.add('active');
      }
 })
 
+//Side gallery
+let galleryImg = '';
+for (let i = 0; i < images.length; i++) {
+   galleryImg += `<img class="gallery-thumb" src="img/${images[i]}" alt="#">`;
+}
 
+gallery.innerHTML += galleryImg; 
+document.querySelector('div.gallery > img').classList.add('active');
 
-//Creare una variabile da riferimento per l'indice dell'array con le immagini ( 0) 
-//Creare un evento in ascolto sul click del mouse associato alla freccia sotto  
-//SE indice array è minore della lunghezza dell'array - 1 
-//   - clicco rimuove la classe switch  
-//   - Richiama la variabile collegata all'array e la aumento di uno  
-//   - Aggiunge la classe di switch  
+const singleImgGallery = document.querySelectorAll('div.gallery > img');
