@@ -21,15 +21,16 @@
 */
 .slider {
     max-width: 43.75rem;
-    max-height: 18.75rem;
+    height: 18.75rem;
     background-color: aqua;
     position: relative;
+    overflow: hidden;
 }
 
 .slider > img {
     width: 100%;
-    height: auto;
     object-fit: cover;
+
 }
 
 .hidden {
@@ -52,6 +53,7 @@
     text-align: center;
     line-height: 2rem;
     font-size: 1.4rem;
+    cursor: pointer;
 }
 
 .prev {
