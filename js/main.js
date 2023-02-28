@@ -70,3 +70,16 @@ gallery.innerHTML += galleryImg;
 document.querySelector('div.gallery > img').classList.add('active');
 
 const singleImgGallery = document.querySelectorAll('div.gallery > img');
+
+let imgFull;
+//Full size
+singleImg[current].addEventListener('click', function() {
+   let imgFullCurrent = document.createElement('img');
+   imgFullCurrent.src=`img/${images[current]}`;
+   imgFullCurrent.classList.add('big','hidden');
+   document.body.append(imgFullCurrent)
+   imgFull = document.querySelector('img.big');
+   imgFull.addEventListener('click', function(){
+      imgFullCurrent.classList.remove('big');
+   })
+})
